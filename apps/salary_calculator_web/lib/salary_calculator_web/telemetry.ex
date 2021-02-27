@@ -1,12 +1,17 @@
 defmodule SalaryCalculatorWeb.Telemetry do
+   @moduledoc """
+   This module is responsible for managing the lifecycle of your Telemetry processes.
+  """
   use Supervisor
   import Telemetry.Metrics
 
+  @spec start_link(any) :: :ignore | {:error, any} | {:ok, pid}
   def start_link(arg) do
     Supervisor.start_link(__MODULE__, arg, name: __MODULE__)
   end
 
   @impl true
+  @spec init(any) :: {:ok, {%{intensity: any, period: any, strategy: any}, list}}
   def init(_arg) do
     children = [
       # Telemetry poller will execute the given period measurements
@@ -19,6 +24,7 @@ defmodule SalaryCalculatorWeb.Telemetry do
     Supervisor.init(children, strategy: :one_for_one)
   end
 
+  @spec metrics :: [Telemetry.Metrics.Summary.t(), ...]
   def metrics do
     [
       # Phoenix Metrics

@@ -5,6 +5,7 @@ defmodule SalaryCalculatorWeb.Application do
 
   use Application
 
+  @spec start(atom(), :permanent | :transient | :temporary) :: {:ok, pid()} | {:error, term()}
   def start(_type, _args) do
     children = [
       # Start the Telemetry supervisor
@@ -23,6 +24,7 @@ defmodule SalaryCalculatorWeb.Application do
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
+  @spec config_change(any, any, any) :: :ok
   def config_change(changed, _new, removed) do
     SalaryCalculatorWeb.Endpoint.config_change(changed, removed)
     :ok

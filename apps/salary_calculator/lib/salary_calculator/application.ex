@@ -5,6 +5,7 @@ defmodule SalaryCalculator.Application do
 
   use Application
 
+  @spec start(atom(), :permanent | :transient | :temporary) :: {:ok, pid()} | {:error, term()}
   def start(_type, _args) do
     children = [
       # Start the PubSub system
