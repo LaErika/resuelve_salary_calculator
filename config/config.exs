@@ -9,8 +9,6 @@
 # move said applications out of the umbrella.
 use Mix.Config
 
-
-
 config :salary_calculator_web,
   generators: [context_app: :salary_calculator]
 

@@ -32,5 +32,7 @@ jobs:
       run: mix do compile --warnings-as-errors
     - name: Static code analysis step
       run: mix credo -a
+    - name: Ensure formatted code
+      run: mix format --check-formatted
     - name: Run tests
       run: mix test

@@ -7,6 +7,7 @@ defmodule SalaryCalculatorWeb.Router do
 
   scope "/api", SalaryCalculatorWeb do
     pipe_through :api
+    post "/players/calculate_salary", PlayerController, :index
   end
 
   # Enables LiveDashboard only for development

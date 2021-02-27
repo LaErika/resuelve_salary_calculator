@@ -1,5 +1,5 @@
 defmodule SalaryCalculatorWeb.Telemetry do
-   @moduledoc """
+  @moduledoc """
    This module is responsible for managing the lifecycle of your Telemetry processes.
   """
   use Supervisor
