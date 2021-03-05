@@ -44,7 +44,8 @@ defmodule SalaryCalculatorWeb.MixProject do
       {:gettext, "~> 0.11"},
       {:salary_calculator, in_umbrella: true},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:open_api_spex, "~> 3.10"}
     ]
   end
 

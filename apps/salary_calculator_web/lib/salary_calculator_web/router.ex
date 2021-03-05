@@ -3,11 +3,13 @@ defmodule SalaryCalculatorWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug OpenApiSpex.Plug.PutApiSpec, module: SalaryCalculatorWeb.ApiSpec
   end
 
-  scope "/api", SalaryCalculatorWeb do
+  scope "/api" do
     pipe_through :api
-    post "/players/calculate_salary", PlayerController, :index
+    post "/players/calculate_salary", SalaryCalculatorWeb.PlayerController, :calculate
+    get "/openapi", OpenApiSpex.Plug.RenderSpec, []
   end
 
   # Enables LiveDashboard only for development

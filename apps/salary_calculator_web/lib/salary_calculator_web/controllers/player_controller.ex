@@ -1,20 +1,21 @@
 defmodule SalaryCalculatorWeb.PlayerController do
   use SalaryCalculatorWeb, :controller
+  use OpenApiSpex.ControllerSpecs
 
-  @spec index(Plug.Conn.t(), any) :: Plug.Conn.t()
-  def index(conn, _) do
-    json(conn, %{
-      "jugadores" => [
-        %{
-          "bono" => 15_000,
-          "equipo" => "rojo",
-          "goles" => 9,
-          "nombre" => "El Rulo",
-          "sueldo" => 30_000,
-          "sueldo_completo" => 14_250,
-          "goles_minimos" => 10
-        }
-      ]
-    })
+  alias SalaryCalculatorWeb.Schemas.{PlayerResponse, PlayerRequest}
+
+  operation(:calculate,
+    summary: "Calculate players salary",
+    parameters: [],
+    request_body: {"Players param", "application/json", PlayerRequest, required: true},
+    responses: [
+      ok: {"Player response", "application/json", PlayerResponse}
+    ]
+  )
+
+  @spec calculate(Plug.Conn.t(), any) :: Plug.Conn.t()
+  def calculate(conn, params) do
+    calculate_salary = SalaryCalculator.Salary.calculate_payroll(params)
+    json(conn, calculate_salary)
   end
 end

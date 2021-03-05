@@ -23,7 +23,7 @@ defmodule SalaryCalculatorWeb.PlayerControllerTest do
         "goles" => 9,
         "sueldo" => 30_000,
         "bono" => 15_000,
-        "sueldo_completo" => 14_250,
+        "sueldo_completo" => 4.35e4,
         "equipo" => "rojo"
       }
     ]
