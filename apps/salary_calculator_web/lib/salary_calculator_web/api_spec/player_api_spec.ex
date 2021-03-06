@@ -2,7 +2,7 @@ defmodule SalaryCalculatorWeb.ApiSpec do
   @moduledoc """
   This module generate Spec
   """
-  alias OpenApiSpex.{Components, Info, OpenApi, Paths, Server}
+  alias OpenApiSpex.{Info, OpenApi, Paths, Server}
   alias SalaryCalculatorWeb.{Endpoint, Router}
   @behaviour OpenApi
 
