@@ -41,7 +41,7 @@ defmodule SalaryCalculator.TeamTest do
 
   test "group_team" do
     assert SalaryCalculator.Team.group_by_name(@players_array) == @team_map
-    end
+  end
 
   test "calculate_goals_per_team" do
     assert SalaryCalculator.Team.calculate_goals_per_team(@team_array) == 30
@@ -50,5 +50,4 @@ defmodule SalaryCalculator.TeamTest do
   test "calculate_expected_goals_per_team" do
     assert SalaryCalculator.Team.calculate_expected_goals_per_team(@team_array) == 20
   end
-
 end

@@ -55,8 +55,6 @@ defmodule SalaryCalculator.SalaryTest do
     "sueldo_completo" => nil
   }
 
-
-
   @player_with_salary %{
     "goles_minimos" => 10,
     "equipo" => "rojo",
@@ -76,6 +74,7 @@ defmodule SalaryCalculator.SalaryTest do
   end
 
   test "bonus_per_player" do
-    assert SalaryCalculator.Salary.bonus_per_player(@team_bonus_reached, @player_map) == @player_with_salary
+    assert SalaryCalculator.Salary.bonus_per_player(@team_bonus_reached, @player_map) ==
+             @player_with_salary
   end
 end

@@ -8,6 +8,7 @@ defmodule SalaryCalculator.Salary do
   @spec calculate_payroll(map) :: %{optional(<<_::72>>) => list}
   def calculate_payroll(data) do
     players = Player.fetch_players(data)
+
     players
     |> Team.group_by_name()
     |> calculate_salary()
@@ -22,11 +23,9 @@ defmodule SalaryCalculator.Salary do
         team = Map.get(team_groups, color)
         goals_per_team = Team.calculate_goals_per_team(team)
 
-        expected_goals_per_team =
-          Team.calculate_expected_goals_per_team(team)
+        expected_goals_per_team = Team.calculate_expected_goals_per_team(team)
 
-        team_bonus_reached =
-          calculate_bonus_percentage(goals_per_team, expected_goals_per_team)
+        team_bonus_reached = calculate_bonus_percentage(goals_per_team, expected_goals_per_team)
 
         Enum.map(team, fn player ->
           bonus_per_player(team_bonus_reached, player)
@@ -50,6 +49,4 @@ defmodule SalaryCalculator.Salary do
     salary_with_bonus = bonus * total_reach + salary
     Player.format(player, expected_goals, salary_with_bonus)
   end
-
-
 end

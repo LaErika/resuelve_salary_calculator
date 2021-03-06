@@ -31,7 +31,12 @@
           "apps/*/test/",
           "apps/*/web/"
         ],
-        excluded: [~r"/_build/", ~r"/deps/", ~r"/node_modules/", ~r"/apps/salary_calculator_web/lib/salary_calculator_web/api_spec/" ]
+        excluded: [
+          ~r"/_build/",
+          ~r"/deps/",
+          ~r"/node_modules/",
+          ~r"/apps/salary_calculator_web/lib/salary_calculator_web/api_spec/"
+        ]
       },
       #
       # Load and configure plugins here:
