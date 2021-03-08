@@ -1,6 +1,8 @@
 defmodule SalaryCalculatorWeb.PlayerController do
   use SalaryCalculatorWeb, :controller
   use OpenApiSpex.ControllerSpecs
+  plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+  @type t() :: %SalaryCalculatorWeb.Schemas.PlayerRequest{}
 
   alias SalaryCalculatorWeb.Schemas.{PlayerResponse, PlayerRequest}
 
@@ -14,8 +16,8 @@ defmodule SalaryCalculatorWeb.PlayerController do
   )
 
   @spec calculate(Plug.Conn.t(), any) :: Plug.Conn.t()
-  def calculate(conn, params) do
-    calculate_salary = SalaryCalculator.Salary.calculate_payroll(params)
+  def calculate(%{body_params: body_params} = conn, _) do
+    calculate_salary = SalaryCalculator.Salary.calculate_payroll(body_params)
     json(conn, calculate_salary)
   end
 end
