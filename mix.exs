@@ -4,11 +4,12 @@ defmodule SalaryCalculator.Umbrella.MixProject do
   def project do
     [
       apps_path: "apps",
-      version: "0.1.0",
+      version: "1.0.0",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
-      aliases: aliases()
+      aliases: aliases(),
+      releases: releases()
     ]
   end
 
@@ -28,6 +29,18 @@ defmodule SalaryCalculator.Umbrella.MixProject do
     [
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: :test}
+    ]
+  end
+
+  defp releases do
+    [
+      salary_calculator_web: [
+        steps: [:assemble, :tar],
+        applications: [
+          salary_calculator_web: :permanent,
+          runtime_tools: :permanent
+        ]
+      ]
     ]
   end
 
