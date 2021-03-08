@@ -14,6 +14,7 @@ defmodule SalaryCalculatorWeb.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
+      test_coverage: [tool: ExCoveralls],
       deps: deps()
     ]
   end
